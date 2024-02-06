@@ -26,7 +26,7 @@ def is_num(s):
         return True
 
 
-class PGraph(tk.Frame):
+class EasyFitter(tk.Frame):
     def __init__(self, master):
         super().__init__(master)
         self.master = master
@@ -302,9 +302,9 @@ class PGraph(tk.Frame):
 
 def main():
     root = Tk()
-    root.title('PGraph')
+    root.title('Easy Fitter')
 
-    app = PGraph(master=root)
+    app = EasyFitter(master=root)
     root.drop_target_register(DND_FILES)
     root.protocol('WM_DELETE_WINDOW', app.quit)
     root.dnd_bind('<<Drop>>', app.load_file)
