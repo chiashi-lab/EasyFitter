@@ -1,0 +1,5 @@
+numpy
+scipy
+matplotlib
+git+https://github.com/PlusF/DataLoader
+tkinterdnd2
