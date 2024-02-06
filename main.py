@@ -117,7 +117,7 @@ class EasyFitter(tk.Frame):
         # Info
         label_info = ttk.Label(frame_info, text=
         'ドラッグ&ドロップでファイルを読み込みます．\n'
-        'グラフ上で矩形を描くことでもピークを追加できます（ズーム・パン非選択状態）．\n'
+        'グラフ上で矩形を描くことでもピークを追加できます．\n'
         '結果は小数第三位で丸めています．\n'
         'ローレンツ関数でフィッティングしています．')
         label_info.grid(row=0, column=0)
