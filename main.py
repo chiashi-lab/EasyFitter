@@ -151,6 +151,7 @@ class EasyFitter(tk.Frame):
         for w in self.peak_widgets[idx]:
             w.destroy()
         self.idx_deleted.append(idx)
+        self.remove_selected_peak_objs(idx)
 
     def generate_delete_command(self, idx) -> callable:
         return lambda: self.delete_peak(idx)
