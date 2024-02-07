@@ -122,7 +122,8 @@ class EasyFitter(tk.Frame):
         'ローレンツ関数でフィッティングしています．')
         label_info.grid(row=0, column=0)
 
-    def add_peak(self, center: float = 100, intensity: float = 100, width: float = 1) -> None:
+    def add_peak(self, x0: float = 90, y0: float = 0, width: float = 20, intensity: float = 100) -> None:
+        center = x0 + width / 2
         vcm = (self.register(is_num), '%P')
         self.num_peaks += 1
         label_peak = ttk.Label(self.frame_param, text=f'Peak {self.num_peaks}')
@@ -140,8 +141,6 @@ class EasyFitter(tk.Frame):
         button_delete.grid(row=self.num_peaks, column=4)
         self.peak_widgets.append([label_peak, entry_center, entry_intensity, entry_width, button_delete])
 
-        x0, x1 = center - width / 2, center + width / 2
-        y0, y1 = 0, intensity
         r = patches.Rectangle((x0, y0), width, intensity, linewidth=0.5, edgecolor='r', facecolor=(1, 0, 0, 0.1))
         self.ax.add_patch(r)
         self.selected_peak_objs.append(r)
@@ -277,10 +276,9 @@ class EasyFitter(tk.Frame):
             return
         x0, x1 = sorted([self.x0, self.x1])
         y0, y1 = sorted([self.y0, self.y1])
-        center = (x0 + x1) / 2
         intensity = y1 - y0
         width = x1 - x0
-        self.add_peak(center, intensity, width)
+        self.add_peak(x0, y0, width, intensity)
         self.canvas.draw()
 
     def draw_preview(self, event):
